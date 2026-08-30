@@ -15,7 +15,7 @@ const Header = () => {
   const { user, isAuthenticated } = useAuth()
 
   return (
-    <header className="border-border border-b">
+    <header className="border-border bg-background sticky top-0 z-40 border-b">
       <div className="flex h-16 items-center justify-between px-4 md:grid md:grid-cols-3 md:px-8">
         <div className="flex items-center gap-3 justify-self-start">
           <MobileNav />

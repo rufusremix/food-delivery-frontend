@@ -16,8 +16,8 @@ import { Button } from '@/components/ui/button'
 import { InfoNote } from '@/components/ui/info-note'
 import { Input } from '@/components/ui/input'
 import { signIn } from '@/features/auth/api'
-import type { ProblemDetails } from '@/features/auth/types'
 import { useAuth } from '@/features/auth/hooks/use-auth'
+import type { ProblemDetails } from '@/lib/api-types'
 
 const signInSchema = z.object({
   email: z

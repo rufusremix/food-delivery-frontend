@@ -1,8 +1,8 @@
-import * as React from 'react'
 import { Dialog } from '@base-ui/react/dialog'
-import { cva, type VariantProps } from 'class-variance-authority'
-import { HugeiconsIcon } from '@hugeicons/react'
 import { Cancel01Icon } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -17,7 +17,9 @@ const sheetContentVariants = cva(
       side: {
         left: 'top-0 bottom-0 left-0 w-72 max-w-[80vw] data-starting-style:-translate-x-full data-ending-style:-translate-x-full',
         right:
-          'top-0 bottom-0 right-0 w-72 max-w-[80vw] data-starting-style:translate-x-full data-ending-style:translate-x-full'
+          'top-0 bottom-0 right-0 w-72 max-w-[80vw] data-starting-style:translate-x-full data-ending-style:translate-x-full',
+        bottom:
+          'right-0 bottom-0 left-0 max-h-[85vh] rounded-t-2xl data-starting-style:translate-y-full data-ending-style:translate-y-full'
       }
     },
     defaultVariants: { side: 'left' }
@@ -59,4 +61,4 @@ const SheetContent = ({
   )
 }
 
-export { Sheet, SheetTrigger, SheetContent, SheetClose }
+export { Sheet, SheetClose, SheetContent, SheetTrigger }

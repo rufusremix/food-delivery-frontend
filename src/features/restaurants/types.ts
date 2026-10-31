@@ -15,3 +15,21 @@ export interface GetRestaurantsParams {
   page?: number
   size?: number
 }
+
+export interface MenuItem {
+  id: number
+  name: string
+  description: string
+  imageUrl: string
+  price: number
+  isVeg: boolean
+  isAvailable: boolean
+}
+
+export interface GetRestaurantMenuParams {
+  search?: string
+  isVeg?: boolean
+  isAvailable?: boolean
+  page?: number
+  size?: number
+}

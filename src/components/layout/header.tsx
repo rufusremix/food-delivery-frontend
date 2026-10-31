@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Logo } from '@/components/ui/logo'
 import { NavItem } from '@/components/ui/nav-link'
 import { useAuth } from '@/features/auth/hooks/use-auth'
+import { CartIcon } from '@/features/cart/components/cart-icon'
 import { useTheme } from '@/hooks/use-theme'
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
   const { user, isAuthenticated } = useAuth()
 
   return (
-    <header className="border-border bg-background sticky top-0 z-40 border-b">
+    <header className="border-border bg-background shrink-0 border-b">
       <div className="flex h-16 items-center justify-between px-4 md:grid md:grid-cols-3 md:px-8">
         <div className="flex items-center gap-3 justify-self-start">
           <MobileNav />
@@ -39,6 +40,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3 justify-self-end">
+          <CartIcon />
           {isAuthenticated ? (
             <span className="text-foreground text-sm font-medium">
               Hi, {user?.name}

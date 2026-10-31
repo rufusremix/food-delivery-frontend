@@ -13,17 +13,3 @@ export interface JwtClaims {
   iat: number
   exp: number
 }
-
-export interface FieldError {
-  field: string
-  message: string
-}
-
-export interface ProblemDetails {
-  title: string
-  detail: string
-  status: number
-  type: string
-  instance?: string
-  errors?: FieldError[]
-}

@@ -1,6 +1,9 @@
 import { Dialog as BaseDialog } from '@base-ui/react/dialog'
+import { Cancel01Icon } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
 import * as React from 'react'
 
+import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const Dialog = BaseDialog.Root
@@ -10,16 +13,20 @@ const DialogClose = BaseDialog.Close
 const DialogContent = ({
   className,
   overlayClassName,
+  onBackdropClick,
   children,
   ...props
 }: React.ComponentProps<typeof BaseDialog.Popup> & {
   overlayClassName?: string
+  onBackdropClick?: () => void
 }) => {
   return (
-    <BaseDialog.Portal>
+    <BaseDialog.Portal container={document.body}>
       <BaseDialog.Backdrop
+        forceRender
+        onClick={onBackdropClick}
         className={cn(
-          'bg-background/60 fixed inset-0 z-40 transition-opacity duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0',
+          'bg-background/60 fixed inset-0 z-50 transition-opacity duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0',
           overlayClassName
         )}
       />
@@ -32,6 +39,15 @@ const DialogContent = ({
         {...props}
       >
         {children}
+        <DialogClose
+          aria-label="Close dialog"
+          className={cn(
+            buttonVariants({ variant: 'ghost', size: 'icon' }),
+            'absolute top-3 right-3'
+          )}
+        >
+          <HugeiconsIcon icon={Cancel01Icon} size={20} />
+        </DialogClose>
       </BaseDialog.Popup>
     </BaseDialog.Portal>
   )

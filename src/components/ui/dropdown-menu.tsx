@@ -49,9 +49,35 @@ const DropdownMenuItem = ({
   />
 )
 
+const DropdownMenuRadioGroup = Menu.RadioGroup
+
+const DropdownMenuRadioItem = ({
+  className,
+  closeOnClick = true,
+  children,
+  ...props
+}: React.ComponentProps<typeof Menu.RadioItem>) => (
+  <Menu.RadioItem
+    data-slot="dropdown-menu-radio-item"
+    closeOnClick={closeOnClick}
+    className={cn(
+      'text-foreground data-highlighted:bg-secondary group flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors outline-none',
+      className
+    )}
+    {...props}
+  >
+    <span className="border-muted-foreground group-data-checked:border-primary flex size-4 shrink-0 items-center justify-center rounded-full border">
+      <Menu.RadioItemIndicator className="bg-primary size-2 rounded-full" />
+    </span>
+    {children}
+  </Menu.RadioItem>
+)
+
 export {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger
 }

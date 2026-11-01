@@ -6,6 +6,7 @@ import { Link } from 'react-router'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { linkVariants } from '@/components/ui/link'
+import { AddressPicker } from '@/features/address/components/address-picker'
 import { useAuth } from '@/features/auth/hooks/use-auth'
 import { CartFooterSummary } from '@/features/cart/components/cart-footer-summary'
 import { CartItemRow } from '@/features/cart/components/cart-item-row'
@@ -88,6 +89,9 @@ const CartContents = ({ onClose }: CartContentsProps) => {
             >
               Clear cart
             </button>
+          </div>
+          <div className="mt-2">
+            <AddressPicker />
           </div>
           <div
             className={cn(

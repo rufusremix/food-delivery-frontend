@@ -70,3 +70,7 @@ export const removeCartItem = async (productId: number): Promise<void> => {
 export const clearCart = async (): Promise<void> => {
   await apiClient.delete('/cart/items')
 }
+
+export const checkout = async (addressId: number): Promise<void> => {
+  await apiClient.post('/checkout', { addressId })
+}

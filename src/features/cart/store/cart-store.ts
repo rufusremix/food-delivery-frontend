@@ -8,11 +8,13 @@ type PendingCartAdd = {
 type CartState = {
   isCartOpen: boolean
   conflict: PendingCartAdd | null
+  selectedAddressId: number | null
 }
 
 export const useCartStore = create<CartState>(() => ({
   isCartOpen: false,
-  conflict: null
+  conflict: null,
+  selectedAddressId: null
 }))
 
 export const openCart = () => {
@@ -33,4 +35,8 @@ export const openCartConflict = (pending: PendingCartAdd) => {
 
 export const closeCartConflict = () => {
   useCartStore.setState({ conflict: null })
+}
+
+export const selectAddress = (addressId: number) => {
+  useCartStore.setState({ selectedAddressId: addressId })
 }

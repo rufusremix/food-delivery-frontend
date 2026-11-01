@@ -45,7 +45,7 @@ const CartContents = ({ onClose }: CartContentsProps) => {
         <p className={cartMessageClassName}>
           Please{' '}
           <Link to="/signin" className={cn(linkVariants(), 'font-medium')}>
-            login
+            Sign in/ Sign up
           </Link>{' '}
           to view the cart.
         </p>
@@ -83,7 +83,7 @@ const CartContents = ({ onClose }: CartContentsProps) => {
               onClick={() => clearCart()}
               className={cn(
                 linkVariants(),
-                'shrink-0 text-sm disabled:pointer-events-none disabled:opacity-50'
+                'shrink-0 cursor-pointer text-sm disabled:pointer-events-none disabled:opacity-50'
               )}
             >
               Clear cart

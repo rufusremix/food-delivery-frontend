@@ -20,3 +20,7 @@ export const refreshSession = async (): Promise<string> => {
   const response = await apiClient.post<TokenResponse>(REFRESH_URL)
   return response.data.data.token
 }
+
+export const logoutSession = async (): Promise<void> => {
+  await apiClient.post('/auth/logout')
+}

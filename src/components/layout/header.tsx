@@ -1,10 +1,20 @@
-import { Moon02Icon, Sun01Icon } from '@hugeicons/core-free-icons'
+import {
+  Moon02Icon,
+  Sun01Icon,
+  UserCircle02Icon
+} from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { NavLink } from 'react-router'
 
 import { MobileNav } from '@/components/layout/mobile-nav'
 import { NAV_LINKS } from '@/components/layout/nav-links'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
 import { Logo } from '@/components/ui/logo'
 import { NavItem } from '@/components/ui/nav-link'
 import { useAuth } from '@/features/auth/hooks/use-auth'
@@ -13,7 +23,7 @@ import { useTheme } from '@/hooks/use-theme'
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme()
-  const { user, isAuthenticated } = useAuth()
+  const { user, isAuthenticated, logout } = useAuth()
 
   return (
     <header className="border-border bg-background shrink-0 border-b">
@@ -42,11 +52,23 @@ const Header = () => {
         <div className="flex items-center gap-3 justify-self-end">
           <CartIcon />
           {isAuthenticated ? (
-            <span className="text-foreground text-sm font-medium">
-              Hi, {user?.name}
-            </span>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="text-foreground flex h-16 cursor-pointer items-center gap-1.5 text-sm font-medium outline-none">
+                <HugeiconsIcon icon={UserCircle02Icon} size={18} />
+                <span className="max-w-28 truncate">Hi, {user?.name}</span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
-            <NavItem to="/signin">Sign in</NavItem>
+            <NavItem
+              to="/signin"
+              className="text-foreground flex items-center gap-1.5"
+            >
+              <HugeiconsIcon icon={UserCircle02Icon} size={18} />
+              Sign in
+            </NavItem>
           )}
           <Button
             variant="ghost"
